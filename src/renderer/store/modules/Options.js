@@ -1,16 +1,20 @@
 const state = {
-  option: false
+  showScriptError: false,
+  otherOption: false
 }
 
 const mutations = {
-  SET_OPTION (state, value) {
-    state.option = value
-  },
+  SET_OPTION (state, data) {
+    state[data.option] = data.value
+  }
 }
 
 const actions = {
-  SetOption ({ commit }) {
-    commit('SET_OPTION')
+  setOption ({ commit }, data) {
+    commit('SET_OPTION', {
+      option: data.option,
+      value: data.value
+    })
   }
 }
 

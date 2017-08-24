@@ -9,34 +9,33 @@
       {{ armaPath }}
       <button @click="onLaunch">launch</button>
 
-      {{ option }}
+      {{ options }}
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+
   export default {
     name: 'landing-page',
 
     data () {
       return {
-        service: {},
         armaFolder: ''
       }
     },
 
-    computed: {
+    computed: mapState({
+      options: state => state.options,
+
       armaPath () {
         return this.armaFolder + '\\arma3.exe'
       }
-    },
+    }),
 
     methods: {
       open (link) {
         this.$electron.shell.openExternal(link)
-      },
-
-      option () {
-        return this.$store.state.option
       },
 
       onFileChange (e) {

@@ -1,39 +1,28 @@
 <template>
   <div>
     <ul>
-      <li><input type="checkbox" @change="updateOption">show script errors</li>
+      <li><launch-option option="showScriptError">show script errors</launch-option></li>
+      <li><launch-option option="otherOption">other option</launch-option></li>
     </ul>
 
-    {{ getOption }}
+    {{ options }}
   </div>
 </template>
 
 <script>
+  import { mapState } from 'vuex'
+  import LaunchOption from '@/components/LaunchOption'
+
   export default {
     name: 'options-page',
 
-    computed: {
-      showScriptError: state => state.options.showScriptError
+    components: {
+      LaunchOption
     },
 
-    methods: {
-      updateOption (e) {
-        // alert('check')
-        // this.$store.state.option = element.checked
-        console.log(e.target.checked)
-        this.$store.commit('updateOption', e.target.checked)
-      },
-
-      getOption () {
-        return $store.state.options.showScriptError
-      }
-    },
-
-    mutations: {
-      updateOption (state, value) {
-        state.options.showScriptError = value
-      }
-    }
+    computed: mapState({
+      options: state => state.options
+    })
   }
 </script>
 
