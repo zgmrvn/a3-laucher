@@ -18,7 +18,6 @@
           return this.$store.state.options[this.option]
         },
         set (value) {
-          console.log(value)
           this.$store.dispatch('setOption', {
             option: this.option,
             value: value
