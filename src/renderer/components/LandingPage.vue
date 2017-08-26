@@ -10,6 +10,8 @@
       <button @click="onLaunch">launch</button>
 
       {{ options }}
+
+      <p>{{ armaOptions }}</p>
   </div>
 </template>
 
@@ -30,6 +32,33 @@
 
       armaPath () {
         return this.armaFolder + '\\arma3.exe'
+      },
+
+      armaOptions () {
+        let args = []
+        let options = this.options
+
+        for (var property in options) {
+          if (options.hasOwnProperty(property)) {
+
+            // if the launch option has a state property
+            // and its set to true
+            if (options[property].state) {
+
+              let option = '-' + property
+
+              // if the options has a value
+              // push it after the launch option
+              if (options[property].value) {
+                option += '="' + options[property].value + '"'
+              }
+
+              args.push(option)
+            }
+          }
+        }
+
+        return args
       }
     }),
 
@@ -49,22 +78,16 @@
       },
 
       onLaunch (e) {
-        /*
         if (!this.armaFolder.length) {
           return
         }
-        */
 
-        // let exec = require('child_process').execFile
+        let exec = require('child_process').execFile
 
-        // Bus.$emit('launchEvent', 18)
-
-        /*
-        exec(this.armaPath, function (err, data) {
+        exec(this.armaPath, this.armaOptions, function (err, data) {
           console.log(err)
           console.log(data.toString())
         })
-        */
       }
     }
   }
