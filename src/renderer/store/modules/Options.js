@@ -9,6 +9,26 @@ const state = {
     text: 'world="empty"',
     value: 'empty',
     state: false
+  },
+  nosplash: {
+    type: Boolean,
+    text: 'nosplash',
+    state: false
+  },
+  noLogs: {
+    type: Boolean,
+    text: 'noLogs',
+    state: false
+  },
+  noPause: {
+    type: Boolean,
+    text: 'noPause',
+    state: false
+  },
+  filePatching: {
+    type: Boolean,
+    text: 'filePatching',
+    state: false
   }
 }
 
