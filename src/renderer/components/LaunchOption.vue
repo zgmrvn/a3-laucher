@@ -1,6 +1,6 @@
 <template>
   <div>
-	  <input type="checkbox" v-model="optionState"><slot>option name</slot>
+	  <input type="checkbox" v-model="optionState">{{ optionText }}
   </div>
 </template>
 
@@ -15,13 +15,19 @@
     computed: {
       optionState: {
         get () {
-          return this.$store.state.options[this.option]
+          return this.$store.state.options[this.option].state
         },
-        set (value) {
+        set (state) {
           this.$store.dispatch('setOption', {
             option: this.option,
-            value: value
+            state: state
           })
+        }
+      },
+
+      optionText: {
+        get () {
+          return this.$store.state.options[this.option].text
         }
       }
     }

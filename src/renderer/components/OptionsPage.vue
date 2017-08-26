@@ -1,8 +1,12 @@
 <template>
   <div>
     <ul>
-      <li><launch-option option="showScriptError">show script errors</launch-option></li>
-      <li><launch-option option="otherOption">other option</launch-option></li>
+      <li v-for="option in optionsString" :key="option"><launch-option :option="option"></launch-option></li>
+
+      <!--
+      <li><launch-option option="showScriptError"></launch-option></li>
+      <li><launch-option option="world"></launch-option></li>
+      -->
     </ul>
 
     {{ options }}
@@ -21,7 +25,18 @@
     },
 
     computed: mapState({
-      options: state => state.options
+      options: state => state.options,
+
+      // list of launch properties names
+      optionsString () {
+        let optionsString = []
+
+        for (let property in this.options) {
+          optionsString.push(property)
+        }
+
+        return optionsString
+      }
     })
   }
 </script>
