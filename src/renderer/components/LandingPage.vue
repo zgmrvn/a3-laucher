@@ -11,6 +11,7 @@
 
       {{ options }}
 
+      <p>{{ armaFolder }}</p>
       <p>{{ armaOptions }}</p>
   </div>
 </template>
@@ -23,12 +24,21 @@
 
     data () {
       return {
-        armaFolder: ''
+        folder: ''
+      }
+    },
+
+    watch: {
+      folder (value) {
+        this.$store.dispatch('setFolder', {
+          folder: value
+        })
       }
     },
 
     computed: mapState({
       options: state => state.options,
+      armaFolder: state => state.arma.folder,
 
       armaPath () {
         return this.armaFolder + '\\arma3.exe'
@@ -74,7 +84,7 @@
           return
         }
 
-        this.armaFolder = files[0].path
+        this.folder = files[0].path
       },
 
       onLaunch (e) {
