@@ -15,6 +15,11 @@ export default new Router({
       redirect: '/'
     },
     {
+      path: '/mods',
+      name: 'mods-page',
+      component: require('@/components/ModsPage')
+    },
+    {
       path: '/mod-folders',
       name: 'folders-page',
       component: require('@/components/FoldersPage')
