@@ -1,4 +1,4 @@
-const state = ["test", "trestd2"]
+const state = ["D:\\zgmrvn\\Arma\\mods\\built"]
 
 const mutations = {
 	ADD_MOD_FOLDER (state, playload) {
