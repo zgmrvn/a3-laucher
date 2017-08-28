@@ -26,7 +26,7 @@
     },
 
     computed: mapState({
-      modFolders: state => state.folders
+      modFolders: state => state.modFolders
     }),
 
     methods: {
