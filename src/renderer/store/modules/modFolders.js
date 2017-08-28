@@ -1,4 +1,7 @@
-const state = ["D:\\zgmrvn\\Arma\\mods\\built"]
+const state = [
+	"D:\\zgmrvn\\Arma\\mods\\built",
+	"D:\\zgmrvn\\Arma\\mods\\CORP\\stable\\corp_stable"
+]
 
 const mutations = {
 	ADD_MOD_FOLDER (state, playload) {
