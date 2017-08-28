@@ -15,7 +15,7 @@ export default new Router({
       redirect: '/'
     },
     {
-      path: '/folders',
+      path: '/mod-folders',
       name: 'folders-page',
       component: require('@/components/FoldersPage')
     },
